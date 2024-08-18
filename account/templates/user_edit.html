@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h2>Pagina de editar usuario</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Update">
+</form>
+<a href="{% url 'account:profile' user.id %}">Atras</a>
+<a href="{% url 'account:user_delete' user.id  %}">Eliminar</a>
+{% endblock %}
