@@ -14,7 +14,16 @@
     <ul>
       {% if user.is_authenticated %}
       <li><a href="{% url 'account:profile' user.id %}">Account details</a></li>
-      <li><a href="{% url 'account:logout' %}">Logout</a></li>
+      <li>
+        <form id="logout-form" action="{% url 'account:logout' %}" method="POST" style="display: inline;">
+          {% csrf_token %}
+          <a> 
+            <button type="submit" style="background:none; border:none; color:white; text-decoration:none; cursor:pointer;">
+            Logout
+          </button>
+          </a>
+        </form>
+      </li>
       <li><a href="{% url 'tasks:index' %}">Task list</a></li>
       {% else %}
       <li><a href="{% url 'account:login' %}">Login</a></li>
